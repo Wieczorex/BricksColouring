@@ -41,7 +41,7 @@ public class DrawLine : MonoBehaviour
 
 		Vector2 hitVector = new Vector2(x*2, y*2);
 		RaycastHit2D hit = Physics2D.Raycast(ray.transform.position,hitVector);
-		if (hit.collider.tag == "NotChecked" || hit.collider.tag == "Teleport")
+		if (hit.collider.tag == "NotChecked" || hit.collider.tag == "Teleport" || hit.collider.tag == "Cleaner")
 		{
 			if (clicked)
 			{
@@ -50,6 +50,10 @@ public class DrawLine : MonoBehaviour
 			if (hit.collider.tag == "Teleport")
 			{
 				TeleportScript.TeleportPlayer();
+			}
+			if (hit.collider.tag == "Cleaner")
+			{
+				LeftNotCheckedTiles.CleanAllChildren();
 			}
 			LeftNotCheckedTiles.CheckAllChildren();
 		}

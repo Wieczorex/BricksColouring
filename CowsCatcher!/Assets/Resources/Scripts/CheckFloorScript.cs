@@ -17,6 +17,7 @@ public class CheckFloorScript : MonoBehaviour
 		{
 			GetComponent<SpriteRenderer>().sprite = czek;
 			transform.tag = "Checked";
+			GetComponent<BoxCollider2D>().isTrigger = false;
 		}
 	}
 
@@ -24,7 +25,6 @@ public class CheckFloorScript : MonoBehaviour
 	{
 		if (col.transform.tag == "Player")
 		{
-			GetComponent<BoxCollider2D>().isTrigger = false;
 		}
 	}
 }

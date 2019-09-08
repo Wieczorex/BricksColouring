@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LeftNotCheckedTiles : MonoBehaviour
 {
+	public static Sprite notCheckedSprite;
+
 	public static GameObject[] tiles;
 	public static int children;
 
@@ -12,6 +14,8 @@ public class LeftNotCheckedTiles : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		notCheckedSprite = Resources.Load<Sprite>("Graphics/Floor");
+
 		children = transform.childCount;
 		tiles = new GameObject[children];
 		for (int i = 0; i < children; ++i)
@@ -40,5 +44,14 @@ public class LeftNotCheckedTiles : MonoBehaviour
 			OverlapCheckAround.AnyPossibleMove();
 		}
 	}
-    
+
+	public static void CleanAllChildren()
+	{
+		foreach (GameObject child in tiles)
+		{
+			child.transform.tag = "NotChecked";
+			child.GetComponent<SpriteRenderer>().sprite = notCheckedSprite;
+			child.GetComponent<BoxCollider2D>().isTrigger = true;
+		}
+	}
 }
