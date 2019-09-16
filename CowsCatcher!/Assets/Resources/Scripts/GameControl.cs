@@ -32,7 +32,7 @@ public class GameControl : MonoBehaviour
 	public static void WonTheGame()
 	{
 		Debug.Log("Congratulations! You Won The Game!");
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+		//Pokazywanie panelu wygranej gry
 	}
 
 	public static void LostTheGame()
