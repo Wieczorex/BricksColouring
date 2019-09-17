@@ -5,12 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class GameControl : MonoBehaviour
 {
+	public GameObject endLevelPanel;
+	public static GameObject endingPanel;
+
 	public static bool gameOver;
 
 	public static bool gameWon;
     // Start is called before the first frame update
     void Start()
     {
+		endingPanel = endLevelPanel;
+		endingPanel.SetActive(false);
+
 		gameOver = false;
 
 		gameWon = false;
@@ -32,7 +38,7 @@ public class GameControl : MonoBehaviour
 	public static void WonTheGame()
 	{
 		Debug.Log("Congratulations! You Won The Game!");
-		//Pokazywanie panelu wygranej gry
+		endingPanel.SetActive(true);
 	}
 
 	public static void LostTheGame()

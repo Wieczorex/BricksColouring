@@ -15,13 +15,25 @@ public class SceneManagerScript : MonoBehaviour
 
 	public void HeadToNextLevel()
 	{
-		StartCoroutine("LoadScene");
+		StartCoroutine("NextScene");
 	}
 
-	IEnumerator LoadScene()
+	public void RestartLevel()
+	{
+		StartCoroutine("RestartScene");
+	}
+
+	IEnumerator NextScene()
 	{
 		transitionAnimator.SetBool("SceneEnds", true);
 		yield return new WaitForSeconds(1.5f);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+	}
+
+	IEnumerator RestartScene()
+	{
+		transitionAnimator.SetBool("SceneEnds", true);
+		yield return new WaitForSeconds(1.5f);
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 }
